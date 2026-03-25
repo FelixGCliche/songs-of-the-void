@@ -56,14 +56,18 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - name: Cache Godot Binary
+      - name: Cache Godot
+        id: cache
         uses: actions/cache@v5
         with:
-          path: /usr/local/bin/godot
+          path: |
+            /usr/local/bin/godot
+            ~/.local/share/godot/export_templates
           key: ${{ matrix.targetPlatform.name }}-godot-${{ github.sha }}
           restore-keys: |
             ${{ matrix.targetPlatform.name }}-godot-
       - name: Setup Godot
+        if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/setup-godot
         with:
           godot-version: ${{env.GODOT_VERSION}}
