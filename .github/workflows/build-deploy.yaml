@@ -56,7 +56,7 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - name: Cache
+      - name: Cache Godot Binary
         uses: actions/cache@v5
         with:
           path: /usr/local/bin/godot
