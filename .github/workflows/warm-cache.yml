@@ -1,0 +1,32 @@
+name: Warm Cache
+on:
+  push:
+    branches:
+      - main
+
+env:
+  GODOT_VERSION: "4.6.1"
+  GODOT_RELEASE: stable
+
+jobs:
+  warm-cache:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        targetPlatform: [{ name: win64 }, { name: html5 }]
+    steps:
+      - name: Cache
+        id: cache
+        uses: actions/cache@v5
+        with:
+          path: |
+            /usr/local/bin/godot
+            ~/.local/share/godot/export_templates
+          key: godot-${{ env.GODOT_VERSION }}-${{ env.GODOT_RELEASE }}
+
+      - name: Setup Godot
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/setup-godot
+        with:
+          godot-version: ${{ env.GODOT_VERSION }}
+          godot-release: ${{ env.GODOT_RELEASE }}

@@ -15,6 +15,10 @@ run/main_scene="uid://d3x1jcapk5d7b"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gd-plug-ui/plugin.cfg")
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
