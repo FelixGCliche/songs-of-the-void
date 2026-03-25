@@ -12,7 +12,7 @@ export_credentials.cfg
 
 # Plugins are installed by gd_plug, so they are ignored
 .plugged/
-addons/*
+addons/
 
 # Except the "core" ones
 !addons/gd-plug/
