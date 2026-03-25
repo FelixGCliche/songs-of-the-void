@@ -22,7 +22,7 @@ jobs:
           path: |
             /usr/local/bin/godot
             ~/.local/share/godot/export_templates
-          key: ${{ matrix.targetPlatform.name }}-godot-${{ env.GODOT_VERSION }}
+          key: godot-${{ env.GODOT_VERSION }}-${{ env.GODOT_RELEASE }}
 
       - name: Setup Godot
         if: steps.cache.outputs.cache-hit != 'true'
