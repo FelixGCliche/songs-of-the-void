@@ -63,9 +63,7 @@ jobs:
           path: |
             /usr/local/bin/godot
             ~/.local/share/godot/export_templates
-          key: ${{ matrix.targetPlatform.name }}-godot
-          restore-keys: |
-            ${{ matrix.targetPlatform.name }}-godot
+          key: godot-${{ env.GODOT_VERSION }}-${{ env.GODOT_RELEASE }}
       - name: Setup Godot
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/setup-godot
