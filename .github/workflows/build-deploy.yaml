@@ -63,7 +63,7 @@ jobs:
           godot-release: ${{ env.GODOT_RELEASE }}
       - name: Run gd-plug
         run: |
-          godot --headless -s plug.gd install
+          godot --headless -s plug.packages.gd install
       - name: Export Godot project
         run: |
           mkdir -vp build-${{ matrix.targetPlatform.name }}
