@@ -21,15 +21,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           lfs: true
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
-          python-version: "3.10"
+          python-version: "3.13"
 
       - name: Install GD Toolkit
         run: pip3 install "gdtoolkit==4.*"
@@ -52,7 +52,7 @@ jobs:
           [{ name: win64, path: build.exe }, { name: html5, path: index.html }]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           lfs: true
@@ -69,7 +69,7 @@ jobs:
           mkdir -vp build-${{ matrix.targetPlatform.name }}
           godot --headless --export-release ${{ matrix.targetPlatform.name }} build-${{ matrix.targetPlatform.name }}/${{ matrix.targetPlatform.path }}
       - name: Generate artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: build-${{ matrix.targetPlatform.name }}
           path: build-${{ matrix.targetPlatform.name }}
@@ -86,7 +86,7 @@ jobs:
     # runs-on: self-hosted
     steps:
       - name: Download export artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: build-html5
       - name: Add coi-service-worker
@@ -98,7 +98,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: "."
       - name: Deploy to GitHub Pages
