@@ -1,6 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
-<<<<<<< HEAD
 .nomedia
 
 # Godot-specific ignores
@@ -11,10 +10,9 @@ export_credentials.cfg
 # Imported translations (automatically generated from CSV files)
 *.translation
 
-# Mono-specific ignores
-.mono/
-data_*/
-mono_crash.*.json
-=======
-/android/
->>>>>>> e46d215 (initial commit)
+# Plugins are installed by gd_plug, so they are ignored
+.plugged/
+addons/*
+
+# Except the "core" ones
+!addons/gd-plug/
